@@ -17,52 +17,19 @@ const portfolioGrid = document.getElementById('portfolio-grid');
 // Portfolio Data - You can customize this with your own projects
 const portfolioData = [
     {
-        title: "E-Commerce Platform",
-        description: "A full-stack e-commerce platform built with React, Node.js, and MongoDB. Features include user authentication, product management, shopping cart, and payment integration.",
-        image: "fas fa-shopping-cart",
-        github: "https://github.com/yourusername/ecommerce-platform",
-        live: "https://ecommerce-platform.vercel.app",
-        technologies: ["React", "Node.js", "MongoDB", "Stripe"]
+        title: "Image Classifier with Teachable Machine",
+        description: "A simple image classification app built using Teachable Machine, exported in Keras format, and integrated with Python to classify images of animals.",
+        image: "fas fa-brain",
+        github: "https://github.com/SmurFxD-ReallOne/Image-Classifier-TeachableMachine",
+        technologies: ["TensorFlow", "Keras", "Python", "Teachable Machine"]
     },
     {
-        title: "Task Management App",
-        description: "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
-        image: "fas fa-tasks",
-        github: "https://github.com/yourusername/task-manager",
-        live: "https://task-manager-app.netlify.app",
-        technologies: ["React", "Firebase", "Material-UI", "Socket.io"]
-    },
-    {
-        title: "Weather Dashboard",
-        description: "A weather application that displays current weather conditions and forecasts for any location worldwide with interactive maps and charts.",
-        image: "fas fa-cloud-sun",
-        github: "https://github.com/yourusername/weather-app",
-        live: "https://weather-dashboard.herokuapp.com",
-        technologies: ["JavaScript", "OpenWeather API", "Chart.js", "CSS3"]
-    },
-    {
-        title: "Blog Platform",
-        description: "A modern blog platform with markdown support, user authentication, comment system, and admin dashboard for content management.",
-        image: "fas fa-blog",
-        github: "https://github.com/yourusername/blog-platform",
-        live: "https://blog-platform.vercel.app",
-        technologies: ["Next.js", "PostgreSQL", "Prisma", "Tailwind CSS"]
-    },
-    {
-        title: "Social Media Dashboard",
-        description: "A comprehensive social media analytics dashboard that tracks engagement, follower growth, and post performance across multiple platforms.",
-        image: "fas fa-chart-line",
-        github: "https://github.com/yourusername/social-dashboard",
-        live: "https://social-dashboard.netlify.app",
-        technologies: ["Vue.js", "D3.js", "Express.js", "Redis"]
-    },
-    {
-        title: "Recipe Finder",
-        description: "A recipe discovery app that helps users find recipes based on available ingredients, dietary restrictions, and cooking preferences.",
-        image: "fas fa-utensils",
-        github: "https://github.com/yourusername/recipe-finder",
-        live: "https://recipe-finder-app.herokuapp.com",
-        technologies: ["React", "Spoonacular API", "Redux", "Styled Components"]
+        title: "Personal Portfolio Website",
+        description: "A personal website built using HTML, CSS, and JavaScript, deployed on GitHub Pages. Features include a hero section, skills, project showcase, and contact form.",
+        image: "fas fa-user-circle",
+        github: "https://github.com/SmurFxD-ReallOne/SmurFxD-ReallOne.github.io", // غيّره إذا كان غير صحيح
+        live: "https://github.com/SmurFxD-ReallOne/SmurFxD-ReallOne.github.io",   // غيّره إذا كان غير صحيح
+        technologies: ["HTML", "CSS", "JavaScript", "GitHub Pages"]
     }
 ];
 
