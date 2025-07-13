@@ -112,10 +112,10 @@ function initializeNavigation() {
     window.addEventListener('scroll', function() {
         if (window.scrollY > 50) {
             navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
+            navbar.style.boxShadow = '0 2px 20px rgba(20, 33, 61, 0.15)';
         } else {
             navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            navbar.style.boxShadow = '0 2px 20px rgba(20, 33, 61, 0.1)';
         }
     });
 }
@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (heroTitle) {
         const text = heroTitle.textContent;
         heroTitle.textContent = '';
-        heroTitle.style.borderRight = '2px solid #fbbf24';
+        heroTitle.style.borderRight = '2px solid #fca311';
         
         let i = 0;
         const typeWriter = () => {
@@ -350,8 +350,8 @@ function addScrollToTop() {
         right: 20px;
         width: 50px;
         height: 50px;
-        background: #2563eb;
-        color: white;
+        background: #fca311;
+        color: #14213d;
         border: none;
         border-radius: 50%;
         cursor: pointer;
@@ -360,7 +360,7 @@ function addScrollToTop() {
         visibility: hidden;
         transition: all 0.3s ease;
         z-index: 1000;
-        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        box-shadow: 0 4px 12px rgba(252, 163, 17, 0.4);
     `;
     
     document.body.appendChild(scrollToTopBtn);
@@ -386,12 +386,12 @@ function addScrollToTop() {
     
     // Hover effects
     scrollToTopBtn.addEventListener('mouseenter', function() {
-        this.style.background = '#1d4ed8';
+        this.style.background = '#e59400';
         this.style.transform = 'translateY(-3px)';
     });
     
     scrollToTopBtn.addEventListener('mouseleave', function() {
-        this.style.background = '#2563eb';
+        this.style.background = '#fca311';
         this.style.transform = 'translateY(0)';
     });
 }
