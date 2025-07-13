@@ -41,10 +41,10 @@
 ## 🖼️ Screenshots
 
 ### Desktop View
-![Desktop Screenshot](https://via.placeholder.com/800x500/0f0f0f/00d4ff?text=Desktop+View)
+![Desktop Screenshot](/images/Desktop.jpg)
 
 ### Mobile View
-![Mobile Screenshot](https://via.placeholder.com/400x700/0f0f0f/00d4ff?text=Mobile+View)
+![Mobile Screenshot](/images/mobile.jpg)
 
 ## 🚀 Quick Start
 
