@@ -14,84 +14,152 @@ const navLinks = document.querySelectorAll('.nav-link');
 const contactForm = document.getElementById('contact-form');
 const portfolioGrid = document.getElementById('portfolio-grid');
 
-// Portfolio Data - You can customize this with your own projects
+// Custom Cursor (only on desktop)
+const cursor = document.querySelector('.custom-cursor');
+const cursorTrail = document.querySelector('.cursor-trail');
+const cursorDot = document.querySelector('.cursor-dot');
+
+// Disable custom cursor completely to fix issues
+if (cursor) cursor.style.display = 'none';
+if (cursorTrail) cursorTrail.style.display = 'none';
+if (cursorDot) cursorDot.style.display = 'none';
+
+// Restore default cursor
+document.body.style.cursor = 'auto';
+
+// Navigation functionality
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
+
+// Close mobile menu when clicking on a link
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    });
+});
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Navbar background change on scroll
+window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 100) {
+        navbar.style.background = 'rgba(15, 15, 15, 0.98)';
+        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.5)';
+    } else {
+        navbar.style.background = 'rgba(15, 15, 15, 0.95)';
+        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+    }
+});
+
+// Scroll-triggered animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            
+            // Animate skill bars when skills section is visible
+            if (entry.target.classList.contains('skill-item')) {
+                const progressBar = entry.target.querySelector('.progress');
+                if (progressBar) {
+                    const width = progressBar.style.width;
+                    progressBar.style.width = '0%';
+                    setTimeout(() => {
+                        progressBar.style.width = width;
+                    }, 200);
+                }
+            }
+        }
+    });
+}, observerOptions);
+
+// Observe elements for animation
+document.querySelectorAll('.fade-in, .skill-item, .portfolio-card, .stat, .contact-item').forEach(el => {
+    observer.observe(el);
+});
+
+// Portfolio data
 const portfolioData = [
     {
-        title: "Image Classifier with Teachable Machine",
-        description: "A simple image classification app built using Teachable Machine, exported in Keras format, and integrated with Python to classify images of animals.",
-        image: "fas fa-brain",
-        github: "https://github.com/SmurFxD-ReallOne/Image-Classifier-TeachableMachine",
-        technologies: ["TensorFlow", "Keras", "Python", "Teachable Machine"]
+        title: "AI Chat Application",
+        description: "A modern chat application powered by artificial intelligence with real-time messaging and smart responses.",
+        image: "fas fa-robot",
+        github: "https://github.com/yourusername/ai-chat-app",
+        live: "https://ai-chat-app.com",
+        technologies: ["React", "Node.js", "OpenAI API", "Socket.io"]
     },
     {
-        title: "Personal Portfolio Website",
-        description: "A personal website built using HTML, CSS, and JavaScript, deployed on GitHub Pages. Features include a hero section, skills, project showcase, and contact form.",
-        image: "fas fa-user-circle",
-        github: "https://github.com/SmurFxD-ReallOne/SmurFxD-ReallOne.github.io", // غيّره إذا كان غير صحيح
-        live: "https://github.com/SmurFxD-ReallOne/SmurFxD-ReallOne.github.io",   // غيّره إذا كان غير صحيح
-        technologies: ["HTML", "CSS", "JavaScript", "GitHub Pages"]
+        title: "Data Visualization Dashboard",
+        description: "Interactive dashboard for visualizing complex datasets with real-time updates and customizable charts.",
+        image: "fas fa-chart-line",
+        github: "https://github.com/yourusername/data-dashboard",
+        live: "https://data-dashboard.com",
+        technologies: ["D3.js", "Python", "Flask", "PostgreSQL"]
+    },
+    {
+        title: "E-commerce Platform",
+        description: "Full-stack e-commerce solution with payment integration, user authentication, and admin panel.",
+        image: "fas fa-shopping-cart",
+        github: "https://github.com/yourusername/ecommerce-platform",
+        live: "https://ecommerce-platform.com",
+        technologies: ["React", "Node.js", "MongoDB", "Stripe"]
+    },
+    {
+        title: "Task Management App",
+        description: "Collaborative task management application with real-time updates and team collaboration features.",
+        image: "fas fa-tasks",
+        github: "https://github.com/yourusername/task-manager",
+        live: "https://task-manager.com",
+        technologies: ["Vue.js", "Express.js", "Socket.io", "MongoDB"]
+    },
+    {
+        title: "Weather Forecast App",
+        description: "Beautiful weather application with location-based forecasts and interactive weather maps.",
+        image: "fas fa-cloud-sun",
+        github: "https://github.com/yourusername/weather-app",
+        live: "https://weather-app.com",
+        technologies: ["JavaScript", "Weather API", "CSS3", "HTML5"]
+    },
+    {
+        title: "Portfolio Website",
+        description: "Modern portfolio website with dark theme, animations, and responsive design.",
+        image: "fas fa-code",
+        github: "https://github.com/yourusername/portfolio",
+        live: "https://portfolio.com",
+        technologies: ["HTML5", "CSS3", "JavaScript", "Responsive Design"]
     }
 ];
 
-// Initialize the application
-document.addEventListener('DOMContentLoaded', function() {
-    initializeNavigation();
-    initializePortfolio();
-    initializeContactForm();
-    initializeScrollAnimations();
-    initializeSkillAnimations();
-});
-
-// Navigation functionality
-function initializeNavigation() {
-    // Mobile menu toggle
-    hamburger.addEventListener('click', function() {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
-
-    // Close mobile menu when clicking on a link
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-        });
-    });
-
-    // Smooth scrolling for navigation links
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                const offsetTop = targetSection.offsetTop - 70; // Account for fixed navbar
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
-    // Navbar background on scroll
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-            navbar.style.boxShadow = '0 2px 20px rgba(45, 55, 72, 0.15)';
-        } else {
-            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-            navbar.style.boxShadow = '0 2px 20px rgba(45, 55, 72, 0.1)';
-        }
-    });
-}
-
-// Portfolio functionality
-function initializePortfolio() {
-    // Populate portfolio grid with project data
-    portfolioGrid.innerHTML = portfolioData.map(project => `
-        <div class="portfolio-card fade-in">
+// Populate portfolio
+function populatePortfolio() {
+    const portfolioGrid = document.getElementById('portfolio-grid');
+    
+    portfolioData.forEach(project => {
+        const projectCard = document.createElement('div');
+        projectCard.className = 'portfolio-card fade-in';
+        
+        projectCard.innerHTML = `
             <div class="portfolio-image">
                 <i class="${project.image}"></i>
             </div>
@@ -99,289 +167,235 @@ function initializePortfolio() {
                 <h3>${project.title}</h3>
                 <p>${project.description}</p>
                 <div class="portfolio-links">
-                    <a href="${project.github}" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                    <a href="${project.live}" target="_blank" rel="noopener noreferrer">
-                        <i class="fas fa-external-link-alt"></i> Live Demo
-                    </a>
+                    <a href="${project.github}" target="_blank">GitHub</a>
+                    <a href="${project.live}" target="_blank">Live Demo</a>
                 </div>
             </div>
-        </div>
-    `).join('');
-}
-
-// Contact form functionality with Supabase integration
-function initializeContactForm() {
-    contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
+        `;
         
-        // Get form data
-        const formData = new FormData(contactForm);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const message = formData.get('message');
+        portfolioGrid.appendChild(projectCard);
         
-        // Show loading state
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
-        const btnText = submitBtn.querySelector('.btn-text');
-        const btnLoading = submitBtn.querySelector('.btn-loading');
-        
-        submitBtn.classList.add('loading');
-        btnText.style.display = 'none';
-        btnLoading.style.display = 'inline-block';
-        
-        try {
-            // Insert data into Supabase
-            const { data, error } = await supabase
-                .from('contact_messages')
-                .insert([
-                    {
-                        name: name,
-                        email: email,
-                        message: message,
-                        created_at: new Date().toISOString()
-                    }
-                ]);
+        // Add hover effect for 3D transform
+        projectCard.addEventListener('mouseenter', (e) => {
+            const rect = projectCard.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
             
-            if (error) {
-                throw error;
-            }
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
             
-            // Show success message
-            showMessage('Thank you! Your message has been sent successfully.', 'success');
-            contactForm.reset();
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
             
-        } catch (error) {
-            console.error('Error sending message:', error);
-            showMessage('Sorry, there was an error sending your message. Please try again.', 'error');
-        } finally {
-            // Reset button state
-            submitBtn.classList.remove('loading');
-            btnText.style.display = 'inline-block';
-            btnLoading.style.display = 'none';
-        }
+            projectCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+        });
+        
+        projectCard.addEventListener('mouseleave', () => {
+            projectCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+        });
     });
 }
 
-// Show success/error messages
-function showMessage(message, type) {
-    // Remove existing messages
-    const existingMessage = document.querySelector('.message');
-    if (existingMessage) {
-        existingMessage.remove();
-    }
-    
-    // Create new message element
-    const messageElement = document.createElement('div');
-    messageElement.className = `message ${type}`;
-    messageElement.textContent = message;
-    
-    // Insert message before the form
-    contactForm.parentNode.insertBefore(messageElement, contactForm);
-    
-    // Remove message after 5 seconds
-    setTimeout(() => {
-        if (messageElement.parentNode) {
-            messageElement.remove();
-        }
-    }, 5000);
-}
+// Contact form functionality
 
-// Scroll animations
-function initializeScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const btnText = submitBtn.querySelector('.btn-text');
+    const btnLoading = submitBtn.querySelector('.btn-loading');
+    
+    // Show loading state
+    submitBtn.classList.add('loading');
+    
+    // Get form data
+    const formData = new FormData(contactForm);
+    const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        message: formData.get('message')
     };
     
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, observerOptions);
-    
-    // Observe all fade-in elements
-    const fadeElements = document.querySelectorAll('.fade-in');
-    fadeElements.forEach(element => {
-        observer.observe(element);
-    });
-}
-
-// Skill progress bar animations
-function initializeSkillAnimations() {
-    const skillObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const progressBars = entry.target.querySelectorAll('.progress');
-                progressBars.forEach(bar => {
-                    const width = bar.style.width;
-                    bar.style.width = '0%';
-                    setTimeout(() => {
-                        bar.style.width = width;
-                    }, 200);
-                });
-                skillObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    const skillsSection = document.querySelector('.skills');
-    if (skillsSection) {
-        skillObserver.observe(skillsSection);
-    }
-}
-
-// Utility function to format dates
-function formatDate(dateString) {
-    const options = { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-    };
-    return new Date(dateString).toLocaleDateString('en-US', options);
-}
-
-// Add some interactive features
-document.addEventListener('DOMContentLoaded', function() {
-    // Add hover effects to skill items
-    const skillItems = document.querySelectorAll('.skill-item');
-    skillItems.forEach(item => {
-        item.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateX(10px) scale(1.02)';
-        });
+    try {
+        // Simulate API call (replace with actual Supabase integration)
+        await new Promise(resolve => setTimeout(resolve, 2000));
         
-        item.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateX(0) scale(1)';
-        });
-    });
-    
-    // Add click effects to portfolio cards
-    const portfolioCards = document.querySelectorAll('.portfolio-card');
-    portfolioCards.forEach(card => {
-        card.addEventListener('click', function(e) {
-            // Only trigger if not clicking on links
-            if (!e.target.closest('a')) {
-                this.style.transform = 'translateY(-15px) scale(1.02)';
-                setTimeout(() => {
-                    this.style.transform = 'translateY(-10px) scale(1)';
-                }, 150);
-            }
-        });
-    });
-    
-    // Add typing effect to hero title (optional enhancement)
-    const heroTitle = document.querySelector('.hero-title');
-    if (heroTitle) {
-        const text = heroTitle.textContent;
-        heroTitle.textContent = '';
-        heroTitle.style.borderRight = '2px solid #f6ad55';
+        // Show success message
+        showMessage('Message sent successfully! I\'ll get back to you soon.', 'success');
+        contactForm.reset();
         
-        let i = 0;
-        const typeWriter = () => {
-            if (i < text.length) {
-                heroTitle.textContent += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
-            } else {
-                heroTitle.style.borderRight = 'none';
-            }
-        };
-        
-        // Start typing effect after a short delay
-        setTimeout(typeWriter, 500);
+    } catch (error) {
+        // Show error message
+        showMessage('Failed to send message. Please try again.', 'error');
+    } finally {
+        // Hide loading state
+        submitBtn.classList.remove('loading');
     }
 });
 
-// Handle window resize for responsive design
-window.addEventListener('resize', function() {
-    // Close mobile menu if window is resized to desktop
-    if (window.innerWidth > 768) {
+// Show message function
+function showMessage(message, type) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${type}`;
+    messageDiv.textContent = message;
+    
+
+    contactForm.insertBefore(messageDiv, contactForm.firstChild);
+    
+    // Remove message after 5 seconds
+    setTimeout(() => {
+        messageDiv.remove();
+    }, 5000);
+}
+
+// Parallax effect for hero section
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const hero = document.querySelector('.hero');
+    const heroContent = document.querySelector('.hero-content');
+    
+    if (hero) {
+        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+        heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
+    }
+});
+
+// Typing animation for hero title
+function typeWriter(element, text, speed = 100) {
+    let i = 0;
+    element.textContent = '';
+    
+    function type() {
+        if (i < text.length) {
+            element.textContent += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+    
+    type();
+}
+
+// Initialize typing animation when page loads
+window.addEventListener('load', () => {
+    const typingElement = document.querySelector('.typing-text');
+    if (typingElement) {
+        const originalText = typingElement.textContent;
+        typeWriter(typingElement, originalText, 150);
+    }
+});
+
+// Add particle interaction
+document.addEventListener('mousemove', (e) => {
+    const particles = document.querySelectorAll('.particle');
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+    
+    particles.forEach((particle, index) => {
+        const rect = particle.getBoundingClientRect();
+        const particleX = rect.left + rect.width / 2;
+        const particleY = rect.top + rect.height / 2;
+        
+        const distance = Math.sqrt(
+            Math.pow(mouseX - particleX, 2) + Math.pow(mouseY - particleY, 2)
+        );
+        
+        if (distance < 100) {
+            particle.style.transform = `scale(2) translateY(-10px)`;
+            particle.style.opacity = '1';
+        } else {
+            particle.style.transform = 'scale(1) translateY(0)';
+            particle.style.opacity = '0.6';
+        }
+    });
+});
+
+// Add scroll progress indicator
+function createScrollProgress() {
+    const progressBar = document.createElement('div');
+    progressBar.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: linear-gradient(90deg, #00d4ff, #0099cc);
+        z-index: 10000;
+        transition: width 0.1s ease;
+        box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    `;
+    document.body.appendChild(progressBar);
+    
+    window.addEventListener('scroll', () => {
+        const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        progressBar.style.width = scrolled + '%';
+    });
+}
+
+// Initialize everything
+document.addEventListener('DOMContentLoaded', () => {
+    populatePortfolio();
+    createScrollProgress();
+    
+    // Add entrance animations
+    const heroElements = document.querySelectorAll('.hero-title, .hero-subtitle, .hero-description, .hero-buttons');
+    heroElements.forEach((el, index) => {
+        el.style.animationDelay = `${index * 0.2}s`;
+    });
+});
+
+// Add keyboard navigation
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        // Close mobile menu
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
     }
 });
 
-// Add scroll to top functionality
-function addScrollToTop() {
-    const scrollToTopBtn = document.createElement('button');
-    scrollToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
-    scrollToTopBtn.className = 'scroll-to-top';
-    scrollToTopBtn.style.cssText = `
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-        background: #e53e3e;
-        color: white;
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        font-size: 1.2rem;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        z-index: 1000;
-        box-shadow: 0 4px 12px rgba(229, 62, 62, 0.4);
-    `;
+// Add touch support for mobile
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+document.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+});
+
+function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
     
-    document.body.appendChild(scrollToTopBtn);
-    
-    // Show/hide scroll to top button
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 300) {
-            scrollToTopBtn.style.opacity = '1';
-            scrollToTopBtn.style.visibility = 'visible';
+    if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+            // Swipe left - could be used for navigation
+            console.log('Swiped left');
         } else {
-            scrollToTopBtn.style.opacity = '0';
-            scrollToTopBtn.style.visibility = 'hidden';
+            // Swipe right - could be used for navigation
+            console.log('Swiped right');
         }
-    });
-    
-    // Scroll to top functionality
-    scrollToTopBtn.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-    
-    // Hover effects
-    scrollToTopBtn.addEventListener('mouseenter', function() {
-        this.style.background = '#c53030';
-        this.style.transform = 'translateY(-3px)';
-    });
-    
-    scrollToTopBtn.addEventListener('mouseleave', function() {
-        this.style.background = '#e53e3e';
-        this.style.transform = 'translateY(0)';
-    });
+    }
 }
 
-// Initialize scroll to top button
-addScrollToTop();
+// Performance optimization - throttle scroll events
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    }
+}
 
-// Add console message for developers
-console.log(`
-🚀 SmurFxD Portfolio Website
-📧 Contact form connected to Supabase
-🎨 Modern, responsive design
-📱 Mobile-friendly interface
-✨ Smooth animations and interactions
-
-To set up Supabase:
-1. Create a new project at https://supabase.com
-2. Create a table called 'contact_messages' with columns:
-   - id (int8, primary key)
-   - name (text)
-   - email (text)
-   - message (text)
-   - created_at (timestamptz)
-3. Replace SUPABASE_URL and SUPABASE_ANON_KEY in script.js
-4. Update portfolio data with your own projects
-`); 
+// Apply throttling to scroll events
+window.addEventListener('scroll', throttle(() => {
+    // Scroll-based animations and effects
+}, 16)); // ~60fps 

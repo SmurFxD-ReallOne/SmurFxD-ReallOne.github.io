@@ -11,6 +11,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Floating Particles Background -->
+    <div class="particles-container">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Dynamic Gradient Background -->
+    <div class="dynamic-gradient"></div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="cursor-trail"></div>
+    <div class="cursor-dot"></div>
+
     <!-- Navigation Bar -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -45,12 +75,25 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1 class="hero-title">Hi, I'm <span class="highlight">Musaad Al-Ghashmari</span></h1>
-            <p class="hero-subtitle">Full Stack Developer & Creative Problem Solver</p>
-            <p class="hero-description">I build amazing digital experiences with modern technologies</p>
-            <div class="hero-buttons">
-                <a href="#portfolio" class="btn btn-primary">View My Work</a>
-                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            <div class="hero-text">
+                <h1 class="hero-title">Hi, I'm <span class="highlight typing-text">Musaad Al-Ghashmari</span></h1>
+                <p class="hero-subtitle">Full Stack Developer & Creative Problem Solver</p>
+                <p class="hero-description">I build amazing digital experiences with modern technologies</p>
+                <div class="hero-buttons">
+                    <a href="#portfolio" class="btn btn-primary">
+                        <span class="btn-text">View My Work</span>
+                        <span class="btn-loading">Loading...</span>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <span class="btn-text">Get In Touch</span>
+                        <span class="btn-loading">Loading...</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-placeholder">
+                    <img src="Images/image.png" alt="Musaad Al-Ghashmari" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                </div>
             </div>
         </div>
     </section>
@@ -62,7 +105,7 @@
             <div class="about-content">
                 <div class="about-image">
                     <div class="profile-pic">
-                        <i class="fas fa-user-circle"></i>
+                        <img src="Images/image.png" alt="Musaad Al-Ghashmari" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                     </div>
                 </div>
                 <div class="about-text">
@@ -72,16 +115,16 @@
                     <p>When I'm not experimenting with AI tools or analyzing datasets, I'm usually learning something new, building personal projects, or brainstorming the next big idea.</p>
                     <div class="about-stats">
                         <div class="stat">
-                            <h4>2+</h4>
+                            <h4>1+</h4>
                             <p>Years Experience</p>
                         </div>
                         <div class="stat">
-                            <h4>20+</h4>
+                            <h4>3+</h4>
                             <p>Projects Completed</p>
                         </div>
                         <div class="stat">
                             <h4>15+</h4>
-                            <p>Happy Clients</p>
+                            <p>...</p>
                         </div>
                     </div>
                 </div>
@@ -196,7 +239,6 @@
         </div>
     </div>
 </section>
-
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio">
         <div class="container">
@@ -233,21 +275,19 @@
                 <form class="contact-form" id="contact-form">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
+                        <input type="text" id="name" name="name" required placeholder="Your name">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" required placeholder="Your email">
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <textarea id="message" name="message" required placeholder="Your message"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">
                         <span class="btn-text">Send Message</span>
-                        <span class="btn-loading" style="display: none;">
-                            <i class="fas fa-spinner fa-spin"></i> Sending...
-                        </span>
+                        <span class="btn-loading">Sending...</span>
                     </button>
                 </form>
             </div>
@@ -260,13 +300,14 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Musaad Al-Ghashmari</h3>
-                    <p>Building digital experiences that matter.</p>
+                    <p>Full Stack Developer passionate about creating innovative digital solutions and exploring the world of AI.</p>
                 </div>
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
                         <li><a href="#portfolio">Portfolio</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
@@ -274,10 +315,10 @@
                 <div class="footer-section">
                     <h4>Connect</h4>
                     <div class="social-links">
-                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://github.com/MusaadAlGhashmari" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/musaad-alghashmari/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://twitter.com/MusaadAlGhashmari" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/musaad.alghashmari/" title="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
@@ -287,8 +328,6 @@
         </div>
     </footer>
 
-    <!-- Supabase JavaScript Client -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
 </body>
 </html>
