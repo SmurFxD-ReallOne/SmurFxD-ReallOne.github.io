@@ -250,14 +250,35 @@ body {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    z-index: 1001;
+    position: relative;
+    padding: 10px;
+    background: rgba(0, 212, 255, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    transition: all 0.3s ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.hamburger:hover {
+    background: rgba(0, 212, 255, 0.2);
+    transform: scale(1.05);
 }
 
 .bar {
     width: 25px;
     height: 3px;
-    background: #e2e8f0;
+    background: #00d4ff;
     margin: 3px 0;
-    transition: 0.3s;
+    transition: 0.3s ease;
+    border-radius: 2px;
+    box-shadow: 0 0 5px rgba(0, 212, 255, 0.3);
+    pointer-events: none;
 }
 
 /* Hero Section */
@@ -1235,7 +1256,17 @@ section {
 /* Responsive Design */
 @media (max-width: 768px) {
     .hamburger {
-        display: flex;
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        z-index: 1001;
+        position: relative;
+    }
+
+    .hamburger .bar {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
 
     .nav-menu {
@@ -1243,17 +1274,50 @@ section {
         left: -100%;
         top: 70px;
         flex-direction: column;
-        background-color: #1a1a1a;
+        background-color: rgba(26, 26, 26, 0.98);
+        backdrop-filter: blur(15px);
         width: 100%;
+        height: calc(100vh - 70px);
         text-align: center;
-        transition: 0.3s;
+        transition: 0.3s ease-in-out;
         box-shadow: 0 10px 27px rgba(0, 0, 0, 0.3);
         padding: 2rem 0;
         border-top: 1px solid #2d2d2d;
+        z-index: 1000;
+        overflow-y: auto;
     }
 
     .nav-menu.active {
         left: 0;
+    }
+
+    .nav-item {
+        margin: 1rem 0;
+    }
+
+    .nav-link {
+        font-size: 1.2rem;
+        padding: 1rem 2rem;
+        display: block;
+        transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+        background: rgba(0, 212, 255, 0.1);
+        color: #00d4ff;
+    }
+
+    /* Hamburger animation */
+    .hamburger.active .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
     }
 
     .hero-content {

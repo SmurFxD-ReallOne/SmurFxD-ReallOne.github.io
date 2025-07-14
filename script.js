@@ -14,6 +14,201 @@ const navLinks = document.querySelectorAll('.nav-link');
 const contactForm = document.getElementById('contact-form');
 const portfolioGrid = document.getElementById('portfolio-grid');
 
+// Debug function
+function debugLog(message) {
+    console.log(`[Mobile Nav Debug] ${message}`);
+}
+
+// Ensure hamburger menu is properly initialized
+function initializeMobileMenu() {
+    debugLog('Initializing mobile menu...');
+    
+    if (!hamburger) {
+        debugLog('ERROR: Hamburger element not found!');
+        return;
+    }
+    
+    if (!navMenu) {
+        debugLog('ERROR: Nav menu element not found!');
+        return;
+    }
+    
+    debugLog('Elements found, setting up mobile menu...');
+    
+    // Set initial state
+    hamburger.style.display = 'none';
+    hamburger.style.visibility = 'visible';
+    hamburger.style.opacity = '1';
+    hamburger.style.pointerEvents = 'auto';
+    
+    // Add touch-action for better mobile handling
+    hamburger.style.touchAction = 'manipulation';
+    
+    debugLog('Mobile menu initialized successfully');
+}
+
+// Show hamburger on mobile devices
+function checkMobileMenu() {
+    const isMobile = window.innerWidth <= 768;
+    debugLog(`Window width: ${window.innerWidth}, Is mobile: ${isMobile}`);
+    
+    if (isMobile) {
+        if (hamburger) {
+            hamburger.style.display = 'flex';
+            hamburger.style.visibility = 'visible';
+            hamburger.style.opacity = '1';
+            hamburger.style.pointerEvents = 'auto';
+            debugLog('Hamburger menu shown on mobile');
+        }
+    } else {
+        if (hamburger) {
+            hamburger.style.display = 'none';
+        }
+        // Close mobile menu on desktop
+        if (navMenu) {
+            navMenu.classList.remove('active');
+        }
+        if (hamburger) {
+            hamburger.classList.remove('active');
+        }
+        document.body.style.overflow = 'auto';
+        debugLog('Hamburger menu hidden on desktop');
+    }
+}
+
+// Mobile menu toggle function
+function toggleMobileMenu(event) {
+    if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+    }
+    
+    debugLog('Toggle mobile menu called');
+    
+    if (!hamburger || !navMenu) {
+        debugLog('ERROR: Required elements not found for toggle');
+        return;
+    }
+    
+    const isActive = navMenu.classList.contains('active');
+    debugLog(`Current menu state: ${isActive ? 'active' : 'inactive'}`);
+    
+    // Toggle classes
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+    
+    const newState = navMenu.classList.contains('active');
+    debugLog(`New menu state: ${newState ? 'active' : 'inactive'}`);
+    
+    // Control body scroll
+    if (newState) {
+        document.body.style.overflow = 'hidden';
+        debugLog('Body scroll disabled');
+    } else {
+        document.body.style.overflow = 'auto';
+        debugLog('Body scroll enabled');
+    }
+    
+    // Force a reflow to ensure the transition works
+    navMenu.offsetHeight;
+}
+
+// Close mobile menu function
+function closeMobileMenu() {
+    debugLog('Closing mobile menu');
+    
+    if (hamburger) {
+        hamburger.classList.remove('active');
+    }
+    if (navMenu) {
+        navMenu.classList.remove('active');
+    }
+    document.body.style.overflow = 'auto';
+}
+
+// Initialize everything
+function initializeNavigation() {
+    debugLog('Starting navigation initialization...');
+    
+    // Initialize mobile menu
+    initializeMobileMenu();
+    
+    // Check mobile menu on load
+    checkMobileMenu();
+    
+    // Add debug button for mobile testing
+    const debugBtn = document.getElementById('debug-btn');
+    if (debugBtn && window.innerWidth <= 768) {
+        debugBtn.style.display = 'block';
+        debugBtn.addEventListener('click', () => {
+            debugLog('Debug button clicked!');
+            toggleMobileMenu();
+        });
+        debugLog('Debug button enabled for mobile testing');
+    }
+    
+    // Add event listeners for hamburger
+    if (hamburger) {
+        debugLog('Adding hamburger event listeners...');
+        
+        // Remove any existing listeners first
+        hamburger.removeEventListener('click', toggleMobileMenu);
+        hamburger.removeEventListener('touchstart', toggleMobileMenu);
+        
+        // Add new listeners
+        hamburger.addEventListener('click', toggleMobileMenu, { passive: false });
+        hamburger.addEventListener('touchstart', toggleMobileMenu, { passive: false });
+        
+        // Add visual feedback
+        hamburger.addEventListener('touchstart', function() {
+            this.style.transform = 'scale(0.95)';
+        }, { passive: true });
+        
+        hamburger.addEventListener('touchend', function() {
+            this.style.transform = 'scale(1)';
+        }, { passive: true });
+        
+        debugLog('Hamburger event listeners added');
+    }
+    
+    // Add event listeners for nav links
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            debugLog('Nav link clicked, closing menu');
+            closeMobileMenu();
+        });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (hamburger && navMenu && 
+            !hamburger.contains(e.target) && 
+            !navMenu.contains(e.target)) {
+            debugLog('Click outside detected, closing menu');
+            closeMobileMenu();
+        }
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        debugLog('Window resized');
+        checkMobileMenu();
+        if (window.innerWidth > 768) {
+            closeMobileMenu();
+        }
+    });
+    
+    debugLog('Navigation initialization complete');
+}
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeNavigation);
+} else {
+    initializeNavigation();
+}
+
 // Custom Cursor (only on desktop)
 const cursor = document.querySelector('.custom-cursor');
 const cursorTrail = document.querySelector('.cursor-trail');
@@ -26,21 +221,6 @@ if (cursorDot) cursorDot.style.display = 'none';
 
 // Restore default cursor
 document.body.style.cursor = 'auto';
-
-// Navigation functionality
-
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
-
-// Close mobile menu when clicking on a link
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-    });
-});
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -399,3 +579,53 @@ function throttle(func, limit) {
 window.addEventListener('scroll', throttle(() => {
     // Scroll-based animations and effects
 }, 16)); // ~60fps 
+
+// Simple fallback solution for mobile navigation
+function addFallbackMobileNav() {
+    debugLog('Adding fallback mobile navigation...');
+    
+    if (!hamburger) return;
+    
+    // Remove all existing event listeners
+    const newHamburger = hamburger.cloneNode(true);
+    hamburger.parentNode.replaceChild(newHamburger, hamburger);
+    
+    // Get the new reference
+    const newHamburgerRef = document.getElementById('hamburger');
+    
+    // Add simple click handler
+    newHamburgerRef.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        debugLog('Fallback hamburger clicked!');
+        
+        const menu = document.getElementById('nav-menu');
+        if (menu) {
+            const isActive = menu.classList.contains('active');
+            debugLog(`Menu was ${isActive ? 'active' : 'inactive'}`);
+            
+            menu.classList.toggle('active');
+            this.classList.toggle('active');
+            
+            const newState = menu.classList.contains('active');
+            debugLog(`Menu is now ${newState ? 'active' : 'inactive'}`);
+            
+            if (newState) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+    };
+    
+    // Add touch handler
+    newHamburgerRef.ontouchstart = function(e) {
+        e.preventDefault();
+        this.onclick(e);
+    };
+    
+    debugLog('Fallback mobile navigation added');
+}
+
+// Add fallback after a short delay
+setTimeout(addFallbackMobileNav, 1000); 
