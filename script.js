@@ -397,8 +397,11 @@ contactForm.addEventListener('submit', async (e) => {
     };
     
     try {
-        // Simulate API call (replace with actual Supabase integration)
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        const { error } = await supabase
+            .from('contact_messages')
+            .insert([data]);
+
+        if (error) throw error;
         
         // Show success message
         showMessage('Message sent successfully! I\'ll get back to you soon.', 'success');
