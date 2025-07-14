@@ -278,56 +278,37 @@ document.querySelectorAll('.fade-in, .skill-item, .portfolio-card, .stat, .conta
     observer.observe(el);
 });
 
-// Portfolio data
+// Portfolio data - Your Real Projects
+// 
+// HOW TO ADD YOUR OWN PROJECTS:
+// 1. Copy one of the project objects below
+// 2. Change the title, description, and links
+// 3. Choose an icon from Font Awesome (https://fontawesome.com/icons)
+// 4. Update the technologies array with your tech stack
+// 5. Set live: "#" if you don't have a live demo
+//
+// Example:
+// {
+//     title: "My Awesome Project",
+//     description: "Description of what your project does...",
+//     image: "fas fa-rocket", // Font Awesome icon
+//     github: "https://github.com/yourusername/project-name",
+//     live: "https://your-project.com", // or "#" if no live demo
+//     technologies: ["React", "Node.js", "MongoDB"]
+// }
+//
 const portfolioData = [
     {
-        title: "AI Chat Application",
-        description: "A modern chat application powered by artificial intelligence with real-time messaging and smart responses.",
-        image: "fas fa-robot",
-        github: "https://github.com/yourusername/ai-chat-app",
-        live: "https://ai-chat-app.com",
-        technologies: ["React", "Node.js", "OpenAI API", "Socket.io"]
+        
+            title: "Your Project Name",
+            description: "What your project does and what problems it solves...",
+            image: "fas fa-icon-name", // Choose from https://fontawesome.com/icons
+            github: "https://github.com/MusaadAlGhashmari/your-project",
+            live: "https://smurfxd-reallone.github.io", // or "#" if no live demo
+            technologies: ["Python", "Pandas", "Your Tech Stack"]
+        
     },
-    {
-        title: "Data Visualization Dashboard",
-        description: "Interactive dashboard for visualizing complex datasets with real-time updates and customizable charts.",
-        image: "fas fa-chart-line",
-        github: "https://github.com/yourusername/data-dashboard",
-        live: "https://data-dashboard.com",
-        technologies: ["D3.js", "Python", "Flask", "PostgreSQL"]
-    },
-    {
-        title: "E-commerce Platform",
-        description: "Full-stack e-commerce solution with payment integration, user authentication, and admin panel.",
-        image: "fas fa-shopping-cart",
-        github: "https://github.com/yourusername/ecommerce-platform",
-        live: "https://ecommerce-platform.com",
-        technologies: ["React", "Node.js", "MongoDB", "Stripe"]
-    },
-    {
-        title: "Task Management App",
-        description: "Collaborative task management application with real-time updates and team collaboration features.",
-        image: "fas fa-tasks",
-        github: "https://github.com/yourusername/task-manager",
-        live: "https://task-manager.com",
-        technologies: ["Vue.js", "Express.js", "Socket.io", "MongoDB"]
-    },
-    {
-        title: "Weather Forecast App",
-        description: "Beautiful weather application with location-based forecasts and interactive weather maps.",
-        image: "fas fa-cloud-sun",
-        github: "https://github.com/yourusername/weather-app",
-        live: "https://weather-app.com",
-        technologies: ["JavaScript", "Weather API", "CSS3", "HTML5"]
-    },
-    {
-        title: "Portfolio Website",
-        description: "Modern portfolio website with dark theme, animations, and responsive design.",
-        image: "fas fa-code",
-        github: "https://github.com/yourusername/portfolio",
-        live: "https://portfolio.com",
-        technologies: ["HTML5", "CSS3", "JavaScript", "Responsive Design"]
-    }
+
 ];
 
 // Populate portfolio
@@ -345,9 +326,16 @@ function populatePortfolio() {
             <div class="portfolio-content">
                 <h3>${project.title}</h3>
                 <p>${project.description}</p>
+                <div class="portfolio-technologies">
+                    ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                </div>
                 <div class="portfolio-links">
-                    <a href="${project.github}" target="_blank">GitHub</a>
-                    <a href="${project.live}" target="_blank">Live Demo</a>
+                    <a href="${project.github}" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    ${project.live !== '#' ? `<a href="${project.live}" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>` : ''}
                 </div>
             </div>
         `;

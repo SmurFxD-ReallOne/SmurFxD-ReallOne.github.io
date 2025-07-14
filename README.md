@@ -37,6 +37,8 @@
 - **Modern CSS**: Flexbox, Grid, and advanced CSS techniques
 - **JavaScript ES6+**: Modern JavaScript with async/await
 - **Performance Optimized**: Fast loading and smooth interactions
+- **Supabase Backend**: Contact form connected to Supabase database
+- **Real-time Data**: Form submissions stored securely in the cloud
 
 ## 🖼️ Screenshots
 
@@ -141,6 +143,7 @@ SmurFxD-ReallOne.github.io/
 - **JavaScript (ES6+)**: Interactivity and dynamic content
 - **Font Awesome**: Icons for skills and projects
 - **Google Fonts**: Typography (Poppins font family)
+- **Supabase**: Backend as a Service for contact form data storage
 
 ## 🌟 Key Features Explained
 
@@ -162,6 +165,12 @@ SmurFxD-ReallOne.github.io/
 - **Breakpoints**: Responsive breakpoints at 768px and 480px
 - **Touch-Friendly**: Optimized for touch interactions
 
+### Backend Integration
+- **Supabase Database**: Contact form messages stored in PostgreSQL database
+- **Real-time Updates**: Instant form submission and feedback
+- **Secure Storage**: Row Level Security (RLS) for data protection
+- **API Integration**: RESTful API calls using Supabase JavaScript client
+
 ## 🚀 Deployment
 
 ### GitHub Pages (Recommended)
@@ -169,6 +178,26 @@ SmurFxD-ReallOne.github.io/
 2. Go to Settings > Pages
 3. Select your main branch as source
 4. Your site will be available at `https://username.github.io/repository-name`
+
+### Supabase Setup (Required for Contact Form)
+1. Create a free account at [supabase.com](https://supabase.com)
+2. Create a new project
+3. Set up the `contact_messages` table with the following SQL:
+   ```sql
+   CREATE TABLE contact_messages (
+       id BIGSERIAL PRIMARY KEY,
+       name TEXT NOT NULL,
+       email TEXT NOT NULL,
+       message TEXT NOT NULL,
+       created_at TIMESTAMPTZ DEFAULT NOW()
+   );
+   ```
+4. Get your project URL and anon key from Settings > API
+5. Update the credentials in `script.js`:
+   ```javascript
+   const SUPABASE_URL = 'your-project-url';
+   const SUPABASE_ANON_KEY = 'your-anon-key';
+   ```
 
 ### Other Hosting Options
 - **Netlify**: Drag and drop the folder to deploy
