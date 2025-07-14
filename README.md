@@ -1,4 +1,4 @@
-# 🌟 Musaad Al-Ghashmari - Personal Portfolio
+# Musaad Al-Ghashmari - Personal Portfolio
 
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
@@ -8,32 +8,32 @@
 
 > A stunning, modern personal portfolio website built with pure HTML, CSS, and JavaScript. Features a dark theme with cyan accents, smooth animations, and a professional design that showcases skills and projects effectively.
 
-## ✨ Live Demo
+## Live Demo
 
-**[🌐 View Live Portfolio](https://smurfxd-reallone.github.io/)**
+**[View Live Portfolio](https://smurfxd-reallone.github.io/)**
 
-## 🎯 Features
+## Features
 
-### 🎨 **Design & UI/UX**
+### **Design & UI/UX**
 - **Dark Theme**: Modern dark design with cyan accent colors
 - **Responsive Design**: Perfect on desktop, tablet, and mobile devices
 - **Smooth Animations**: CSS animations and JavaScript interactions
 - **Professional Layout**: Clean, organized sections for easy navigation
 
-### 🚀 **Interactive Elements**
+### **Interactive Elements**
 - **Floating Particles**: Animated background particles for visual appeal
 - **Typing Animation**: Dynamic text animation for the hero section
 - **Scroll Animations**: Elements animate as they come into view
 - **Hover Effects**: Interactive hover states on all clickable elements
 
-### 📱 **Sections**
+### **Sections**
 - **Hero Section**: Eye-catching introduction with typing animation
 - **About Me**: Personal information and statistics
 - **Skills**: Animated progress bars for technical skills
 - **Portfolio**: Project showcase with hover effects
 - **Contact**: Contact form and information
 
-### 🛠️ **Technical Features**
+### **Technical Features**
 - **Pure HTML/CSS/JS**: No frameworks, lightweight and fast
 - **Modern CSS**: Flexbox, Grid, and advanced CSS techniques
 - **JavaScript ES6+**: Modern JavaScript with async/await
@@ -41,7 +41,7 @@
 - **Supabase Backend**: Contact form connected to Supabase database
 - **Real-time Data**: Form submissions stored securely in the cloud
 
-## 🖼️ Screenshots
+## Screenshots
 
 ### Desktop View
 ![Desktop Screenshot](/images/Desktop.jpg)
@@ -49,7 +49,7 @@
 ### Mobile View
 ![Mobile Screenshot](/images/mobile.jpg)
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - A modern web browser (Chrome, Firefox, Safari, Edge)
@@ -72,7 +72,7 @@
    - Modify `styles.css` to change colors and styling
    - Update `script.js` to add new functionality
 
-## 🎨 Customization Guide
+## Customization Guide
 
 ### Personal Information
 Update the following in `index.html`:
@@ -124,7 +124,7 @@ Modify the CSS custom properties in `styles.css`:
 }
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 SmurFxD-ReallOne.github.io/
@@ -137,7 +137,7 @@ SmurFxD-ReallOne.github.io/
 └── .gitignore             # Git ignore file
 ```
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - **HTML5**: Semantic markup and structure
 - **CSS3**: Styling, animations, and responsive design
@@ -146,7 +146,7 @@ SmurFxD-ReallOne.github.io/
 - **Google Fonts**: Typography (Poppins font family)
 - **Supabase**: Backend as a Service for contact form data storage
 
-## 🌟 Key Features Explained
+## Key Features Explained
 
 ### Dark Theme Design
 - **Background**: Deep black (`#0f0f0f`) and dark gray (`#1a1a1a`)
@@ -172,7 +172,7 @@ SmurFxD-ReallOne.github.io/
 - **Secure Storage**: Row Level Security (RLS) for data protection
 - **API Integration**: RESTful API calls using Supabase JavaScript client
 
-## 🚀 Deployment
+## Deployment
 
 ### GitHub Pages (Recommended)
 1. Push your code to a GitHub repository
@@ -206,7 +206,7 @@ SmurFxD-ReallOne.github.io/
 - **Firebase Hosting**: Use Firebase CLI to deploy
 - **Traditional Web Hosting**: Upload files via FTP
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Here's how you can help:
 
@@ -222,18 +222,18 @@ Contributions are welcome! Here's how you can help:
 - Ensure responsive design works properly
 - Add comments for complex functionality
 
-## 📝 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **Font Awesome**: For the beautiful icons
 - **Google Fonts**: For the Poppins font family
 - **CSS Grid & Flexbox**: For modern layout techniques
 - **Intersection Observer API**: For scroll animations
 
-## 📞 Contact
+## Contact
 
 **Musaad Al-Ghashmari**
 - **Email**: mossad.alghashmari@gmail.com
@@ -241,12 +241,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Location**: Taif, Saudi Arabia
 - **GitHub**: [@SmurFxD-ReallOne](https://github.com/SmurFxD-ReallOne)
 
-## ⭐ Show Your Support
+## Show Your Support
 
-If you find this project helpful, please give it a ⭐ on GitHub!
+If you find this project helpful, please give it a star on GitHub!
 
 ---
 
-**Built with ❤️ by Musaad Al-Ghashmari**
+**Built with love by Musaad Al-Ghashmari**
 
 *Last updated: July 2025* 
