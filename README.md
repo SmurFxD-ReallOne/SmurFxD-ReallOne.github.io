@@ -131,10 +131,12 @@ SmurFxD-ReallOne.github.io/
 ├── index.html              # Main HTML file
 ├── styles.css              # CSS styles and animations
 ├── script.js               # JavaScript functionality
+├── config.js               # Supabase credentials (not in Git)
+├── config.example.js       # Template for Supabase setup
+├── .gitignore              # Git ignore file
 ├── Images/
 │   └── image.png          # Profile picture
-├── README.md              # This file
-└── .gitignore             # Git ignore file
+└── README.md              # This file
 ```
 
 ## Technologies Used
@@ -194,7 +196,7 @@ SmurFxD-ReallOne.github.io/
    );
    ```
 4. Get your project URL and anon key from Settings > API
-5. Update the credentials in `script.js`:
+5. Copy `config.example.js` to `config.js` and update with your credentials:
    ```javascript
    const SUPABASE_URL = 'your-project-url';
    const SUPABASE_ANON_KEY = 'your-anon-key';
