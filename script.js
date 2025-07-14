@@ -1,6 +1,7 @@
 // Supabase Configuration
-const SUPABASE_URL = 'https://lbhspudpycprzfdjsjes.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxiaHNwdWRweWNwcnpmZGpzamVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI0NDk1OTYsImV4cCI6MjA2ODAyNTU5Nn0.1Se6NrpGFO8UwcaIq0ZzTcfJeBzp75Bpe6VpqjMWLYM';
+// Credentials are now imported from config.js (which is in .gitignore)
+// const SUPABASE_URL = 'your-supabase-url';
+// const SUPABASE_ANON_KEY = 'your-supabase-anon-key';
 
 // Initialize Supabase client
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
