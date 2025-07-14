@@ -3,8 +3,19 @@
 // const SUPABASE_URL = 'your-supabase-url';
 // const SUPABASE_ANON_KEY = 'your-supabase-anon-key';
 
-// Initialize Supabase client
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+// Initialize Supabase client (with fallback for GitHub Pages)
+let supabase;
+try {
+    if (typeof SUPABASE_URL !== 'undefined' && typeof SUPABASE_ANON_KEY !== 'undefined') {
+        supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    } else {
+        console.log('Supabase credentials not found - contact form will be disabled');
+        supabase = null;
+    }
+} catch (error) {
+    console.log('Supabase initialization failed - contact form will be disabled');
+    supabase = null;
+}
 
 // DOM Elements
 const navbar = document.getElementById('navbar');
@@ -382,6 +393,14 @@ contactForm.addEventListener('submit', async (e) => {
     
     console.log('Form data:', data); // Debug log
     
+    // Check if Supabase is available
+    if (!supabase) {
+        console.log('Supabase not available - showing fallback message');
+        showMessage('Contact form is currently unavailable. Please email me directly at mossad.alghashmari@gmail.com', 'error');
+        submitBtn.classList.remove('loading');
+        return;
+    }
+    
     try {
         console.log('Attempting to insert data into Supabase...'); // Debug log
         
@@ -511,6 +530,11 @@ function createScrollProgress() {
 
 // Test Supabase connection
 async function testSupabaseConnection() {
+    if (!supabase) {
+        console.log('Supabase not available - skipping connection test');
+        return;
+    }
+    
     try {
         console.log('Testing Supabase connection...');
         const { data, error } = await supabase
