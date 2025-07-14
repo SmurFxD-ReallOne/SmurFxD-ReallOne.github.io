@@ -1,7 +1,4 @@
 // Supabase Configuration
-// Replace these with your actual Supabase credentials
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
-
 const SUPABASE_URL = 'https://lbhspudpycprzfdjsjes.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxiaHNwdWRweWNwcnpmZGpzamVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI0NDk1OTYsImV4cCI6MjA2ODAyNTU5Nn0.1Se6NrpGFO8UwcaIq0ZzTcfJeBzp75Bpe6VpqjMWLYM';
 
@@ -379,9 +376,10 @@ function populatePortfolio() {
 }
 
 // Contact form functionality
-
 contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+    
+    console.log('Form submitted!'); // Debug log
     
     const submitBtn = contactForm.querySelector('button[type="submit"]');
     const btnText = submitBtn.querySelector('.btn-text');
@@ -395,23 +393,34 @@ contactForm.addEventListener('submit', async (e) => {
     const data = {
         name: formData.get('name'),
         email: formData.get('email'),
-        message: formData.get('message')
+        message: formData.get('message'),
+        created_at: new Date().toISOString()
     };
     
+    console.log('Form data:', data); // Debug log
+    
     try {
-        const { error } = await supabase
+        console.log('Attempting to insert data into Supabase...'); // Debug log
+        
+        const { data: result, error } = await supabase
             .from('contact_messages')
             .insert([data]);
 
-        if (error) throw error;
+        console.log('Supabase response:', { result, error }); // Debug log
+
+        if (error) {
+            console.error('Supabase error:', error); // Debug log
+            throw error;
+        }
         
         // Show success message
         showMessage('Message sent successfully! I\'ll get back to you soon.', 'success');
         contactForm.reset();
         
     } catch (error) {
+        console.error('Error details:', error); // Debug log
         // Show error message
-        showMessage('Failed to send message. Please try again.', 'error');
+        showMessage(`Failed to send message: ${error.message}`, 'error');
     } finally {
         // Hide loading state
         submitBtn.classList.remove('loading');
@@ -517,10 +526,30 @@ function createScrollProgress() {
     });
 }
 
+// Test Supabase connection
+async function testSupabaseConnection() {
+    try {
+        console.log('Testing Supabase connection...');
+        const { data, error } = await supabase
+            .from('contact_messages')
+            .select('count')
+            .limit(1);
+        
+        if (error) {
+            console.error('Supabase connection test failed:', error);
+        } else {
+            console.log('Supabase connection successful!');
+        }
+    } catch (err) {
+        console.error('Supabase connection error:', err);
+    }
+}
+
 // Initialize everything
 document.addEventListener('DOMContentLoaded', () => {
     populatePortfolio();
     createScrollProgress();
+    testSupabaseConnection(); // Test the connection
     
     // Add entrance animations
     const heroElements = document.querySelectorAll('.hero-title, .hero-subtitle, .hero-description, .hero-buttons');
