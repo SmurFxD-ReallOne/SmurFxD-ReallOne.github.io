@@ -299,52 +299,46 @@ document.querySelectorAll('.fade-in, .skill-item, .portfolio-card, .stat, .conta
 //
 const portfolioData = [
     {
-        
-            title: "Your Project Name",
-            description: "What your project does and what problems it solves...",
-            image: "fas fa-icon-name", // Choose from https://fontawesome.com/icons
-            github: "https://github.com/MusaadAlGhashmari/your-project",
-            live: "https://smurfxd-reallone.github.io", // or "#" if no live demo
-            technologies: ["Python", "Pandas", "Your Tech Stack"]
-        
+        title: "Image Classifier with Teachable Machine",
+        description: "An offline image classification project built using Google's Teachable Machine. It recognizes and classifies images from a file input, showcasing the integration of pre-trained models.",
+        image: "fas fa-image",
+        github: "https://github.com/SmurFxD-ReallOne/Image-Classifier-TeachableMachine",
+        technologies: ["TensorFlow", "Teachable Machine", "Python"]
     },
-
+    {
+        title: "TUStore – University E-commerce Platform",
+        description: "TUStore is a custom-built e-commerce system designed for Taif University students to browse, manage, and interact with university-specific products and services.",
+        image: "fas fa-store",
+        github: "#",
+        live: "#",
+        technologies: ["PHP", "CodeIgniter 4", "MySQL", "JavaScript", "Moyasar API","figma","bootstrap","CSS","HTML","UML"]
+    },
+    {
+        title: "PHANTOM – Custom Rappelz Server",
+        description: "PHANTOM was a full-scale custom game server and digital platform for the MMORPG Rappelz, designed to deliver a stable, unique, and community-driven experience.",
+        image: "fas fa-gamepad",
+        github: "#",
+        live: "#",
+        technologies: ["C++", "Lua", "SQL","Blender","VPS"]
+    },
+    {
+        title: "Portfolio Website", 
+        description: "Modern responsive portfolio website with dynamic animations, contact form integration, and professional design.",
+        image: "fas fa-code",
+        github: "https://github.com/SmurFxD-ReallOne/portfolio-website",
+        live: "https://smurfxd-reallone.github.io",
+        technologies: ["HTML", "CSS", "JavaScript", "Supabase", "Responsive Design"]
+    }
 ];
 
-// Populate portfolio
-function populatePortfolio() {
-    const portfolioGrid = document.getElementById('portfolio-grid');
+// Add hover effects to portfolio cards
+function addPortfolioHoverEffects() {
+    const portfolioCards = document.querySelectorAll('.portfolio-card');
     
-    portfolioData.forEach(project => {
-        const projectCard = document.createElement('div');
-        projectCard.className = 'portfolio-card fade-in';
-        
-        projectCard.innerHTML = `
-            <div class="portfolio-image">
-                <i class="${project.image}"></i>
-            </div>
-            <div class="portfolio-content">
-                <h3>${project.title}</h3>
-                <p>${project.description}</p>
-                <div class="portfolio-technologies">
-                    ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
-                </div>
-                <div class="portfolio-links">
-                    <a href="${project.github}" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                    ${project.live !== '#' ? `<a href="${project.live}" target="_blank" rel="noopener noreferrer">
-                        <i class="fas fa-external-link-alt"></i> Live Demo
-                    </a>` : ''}
-                </div>
-            </div>
-        `;
-        
-        portfolioGrid.appendChild(projectCard);
-        
+    portfolioCards.forEach(card => {
         // Add hover effect for 3D transform
-        projectCard.addEventListener('mouseenter', (e) => {
-            const rect = projectCard.getBoundingClientRect();
+        card.addEventListener('mouseenter', (e) => {
+            const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
             
@@ -354,11 +348,11 @@ function populatePortfolio() {
             const rotateX = (y - centerY) / 10;
             const rotateY = (centerX - x) / 10;
             
-            projectCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
         });
         
-        projectCard.addEventListener('mouseleave', () => {
-            projectCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
         });
     });
 }
@@ -535,7 +529,7 @@ async function testSupabaseConnection() {
 
 // Initialize everything
 document.addEventListener('DOMContentLoaded', () => {
-    populatePortfolio();
+    addPortfolioHoverEffects();
     createScrollProgress();
     testSupabaseConnection(); // Test the connection
     
