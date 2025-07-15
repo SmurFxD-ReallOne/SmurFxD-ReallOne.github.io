@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musaad Al-Ghashmari - Personal Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Floating Particles Background -->
+    <div class="particles-container">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Dynamic Gradient Background -->
+    <div class="dynamic-gradient"></div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="cursor-trail"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home">Musaad Al-Ghashmari</a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#skills" class="nav-link">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#portfolio" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <!-- Debug button for testing -->
+            <button id="debug-btn" style="display: none; position: fixed; top: 10px; right: 10px; z-index: 9999; background: red; color: white; padding: 10px; border: none; border-radius: 5px;">TEST MENU</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Hi, I'm <span class="highlight typing-text">Musaad Al-Ghashmari</span></h1>
+                <p class="hero-subtitle">Data Enthusiast & AI Explorer</p>
+                <p class="hero-description">I specialize in turning data into insights and building intelligent solutions using modern technologies.</p>
+                <div class="hero-buttons">
+                    <a href="#portfolio" class="btn btn-primary">
+                        <span class="btn-text">View My Work</span>
+                        <span class="btn-loading">Loading...</span>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <span class="btn-text">Get In Touch</span>
+                        <span class="btn-loading">Loading...</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-placeholder">
+                    <img src="images/image.jpg" alt="Musaad Al-Ghashmari" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="profile-pic">
+                        <img src="images/image.jpg" alt="Musaad Al-Ghashmari" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3>Curious AI Explorer</h3>
+                    <p>I'm a passionate tech enthusiast diving deep into data science and artificial intelligence. I enjoy turning raw data into meaningful insights and building smart solutions that make life easier.
+                        Currently exploring AI models, data pipelines, and ways to bring intelligent systems into real-world use.</p>
+                    <p>When I'm not experimenting with AI tools or analyzing datasets, I'm usually learning something new, building personal projects, or brainstorming the next big idea.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <h4>1+</h4>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="stat">
+                            <h4>3+</h4>
+                            <p>Projects Completed</p>
+                        </div>
+                        <div class="stat">
+                            <h4>15+</h4>
+                            <p>...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Skills Section -->
+<section id="skills" class="skills">
+    <div class="container">
+        <h2 class="section-title">Skills & Technologies</h2>
+        <div class="skills-grid">
+            
+            <!-- Data Science Tools -->
+            <div class="skill-category">
+                <h3>Data Science</h3>
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Pandas</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>NumPy</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-database"></i>
+                        <span>SQL</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Machine Learning & AI -->
+            <div class="skill-category">
+                <h3>AI & ML</h3>
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <i class="fas fa-brain"></i>
+                        <span>TensorFlow / Keras</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-robot"></i>
+                        <span>Scikit-learn</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-cogs"></i>
+                        <span>Prompt Engineering</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 70%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Programming & Scripting -->
+            <div class="skill-category">
+                <h3>Programming</h3>
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <i class="fab fa-python"></i>
+                        <span>Python</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-js-square"></i>
+                        <span>JavaScript</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 65%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools & Platforms -->
+            <div class="skill-category">
+                <h3>Tools & Platforms</h3>
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <i class="fas fa-code-branch"></i>
+                        <span>Git & GitHub</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-cloud"></i>
+                        <span>Google Colab / Jupyter</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="portfolio-grid" id="portfolio-grid">
+                <!-- Image Classifier with Teachable Machine -->
+                <div class="portfolio-card fade-in">
+                    <div class="portfolio-image">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Image Classifier with Teachable Machine</h3>
+                        <p>An offline image classification project built using Google's Teachable Machine. It recognizes and classifies images from a file input, showcasing the integration of pre-trained models.</p>
+                        <div class="portfolio-technologies">
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">Teachable Machine</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="https://github.com/SmurFxD-ReallOne/Image-Classifier-TeachableMachine" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TUStore – University E-commerce Platform -->
+                <div class="portfolio-card fade-in">
+                    <div class="portfolio-image">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>TUStore – University E-commerce Platform</h3>
+                        <p>TUStore is a custom-built e-commerce system designed for Taif University students to browse, manage, and interact with university-specific products and services.</p>
+                        <div class="portfolio-technologies">
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">CodeIgniter 4</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Moyasar API</span>
+                            <span class="tech-tag">Figma</span>
+                            <span class="tech-tag">Bootstrap</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">UML</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PHANTOM – Custom Rappelz Server -->
+                <div class="portfolio-card fade-in">
+                    <div class="portfolio-image">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>PHANTOM – Custom Rappelz Server</h3>
+                        <p>PHANTOM was a full-scale custom game server and digital platform for the MMORPG Rappelz, designed to deliver a stable, unique, and community-driven experience.</p>
+                        <div class="portfolio-technologies">
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">Lua</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">Blender</span>
+                            <span class="tech-tag">VPS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Website -->
+                <div class="portfolio-card fade-in">
+                    <div class="portfolio-image">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Portfolio Website</h3>
+                        <p>Modern responsive portfolio website with dynamic animations, contact form integration, and professional design.</p>
+                        <div class="portfolio-technologies">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Supabase</span>
+                            <span class="tech-tag">Responsive Design</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="https://github.com/SmurFxD-ReallOne/SmurFxD-ReallOne.github.io" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="https://smurfxd-reallone.github.io" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Work Together</h3>
+                    <p>I'm always interested in new opportunities and exciting projects. Feel free to reach out if you'd like to collaborate or just want to say hello!</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>mossad.alghashmari@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+966 535558831</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Taif, Saudi Arabia</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="Your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required placeholder="Your message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <span class="btn-text">Send Message</span>
+                        <span class="btn-loading">Sending...</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Musaad Al-Ghashmari</h3>
+                    <p>Full Stack Developer passionate about creating innovative digital solutions and exploring the world of AI.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/SmurFxD-ReallOne" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/musaad-al-ghashmari-1986bb316" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://x.com/SmurfxD_IT" title="X"><i class="fa-solid fa-x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Musaad Al-Ghashmari. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Supabase JavaScript Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
