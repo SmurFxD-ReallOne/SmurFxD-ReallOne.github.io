@@ -44,10 +44,10 @@
 ## Screenshots
 
 ### Desktop View
-![Desktop Screenshot](/images/Desktop.jpg)
+![Desktop Screenshot](/images/Desktop.gif)
 
 ### Mobile View
-![Mobile Screenshot](/images/mobile.jpg)
+![Mobile Screenshot](/images/mobile.gif)
 
 ## Quick Start
 

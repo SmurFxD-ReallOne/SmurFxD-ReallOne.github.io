@@ -337,7 +337,7 @@ const portfolioData = [
         title: "Portfolio Website", 
         description: "Modern responsive portfolio website with dynamic animations, contact form integration, and professional design.",
         image: "fas fa-code",
-        github: "https://github.com/SmurFxD-ReallOne/portfolio-website",
+        github: "https://github.com/SmurFxD-ReallOne/SmurFxD-ReallOne.github.io",
         live: "https://smurfxd-reallone.github.io",
         technologies: ["HTML", "CSS", "JavaScript", "Supabase", "Responsive Design"]
     }
